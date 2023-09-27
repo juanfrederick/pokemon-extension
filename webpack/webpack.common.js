@@ -18,7 +18,7 @@ module.exports = {
         'content-script.bundle': path.join(
             srcPath,
             'ContentScript',
-            'index.ts',
+            'index.tsx',
         ),
         popup: path.join(srcPath, 'popup', 'index.tsx'),
     },

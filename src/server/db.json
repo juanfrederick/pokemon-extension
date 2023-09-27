@@ -1,0 +1,30 @@
+{
+  "user": [
+    {
+      "username": "juanfrederick",
+      "email": "juanfrederick@gmail.com",
+      "password": "password",
+      "pokemonCatched": 0,
+      "id": 1
+    },
+    {
+      "username": "dummy",
+      "password": "dummy123",
+      "id": 2
+    },
+    {
+      "username": "juanfredericka",
+      "email": "juanfredericka@gmail.com",
+      "password": "asd",
+      "pokemonCatched": 0,
+      "id": 3
+    },
+    {
+      "username": "basep",
+      "email": "basep9181@gmail.com",
+      "password": "asd",
+      "pokemonCatched": 0,
+      "id": 4
+    }
+  ]
+}
