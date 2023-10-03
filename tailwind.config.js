@@ -12,6 +12,7 @@ module.exports = {
                 },
                 plain:{
                     100: "#F4F4F4",
+                    150: "#EFEFEF",
                     200: "#FFFFFF"
                 },
                 error: "#FF0000",

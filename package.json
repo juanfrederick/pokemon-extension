@@ -34,8 +34,13 @@
         "server": "json-server --watch src/server/db.json"
     },
     "dependencies": {
+        "@emotion/react": "^11.11.1",
+        "@emotion/styled": "^11.11.0",
+        "@mui/icons-material": "^5.14.11",
+        "@mui/material": "^5.14.11",
         "@reduxjs/toolkit": "^1.9.6",
         "@types/react-redux": "^7.1.26",
+        "lottie-react": "^2.4.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "react-redux": "^8.1.2",

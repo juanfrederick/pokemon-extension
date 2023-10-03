@@ -1,8 +1,9 @@
-import Pokeball from '@components/Logo/Pokeball';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import ContentScript from './ContentScript';
 import '../styles/app.css';
+import { Provider } from 'react-redux';
+import store from '../store';
 
 const rootElement = document.createElement('div');
 rootElement.style.position = 'fixed';
@@ -17,4 +18,8 @@ document.body.appendChild(rootElement);
 
 console.log(rootElement);
 
-ReactDOM.createRoot(rootElement).render(<ContentScript />);
+ReactDOM.createRoot(rootElement).render(
+    <Provider store={store}>
+        <ContentScript />
+    </Provider>,
+);

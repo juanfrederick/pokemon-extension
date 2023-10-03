@@ -1,7 +1,8 @@
-import LoginForm from '@components/Form/LoginForm';
-import SignupForm from '@components/Form/SignupForm';
-import MainMenu from '@components/MainMenu/MainMenu';
-import ProtectedRoutes from '@components/Routes/ProtectedRoutes';
+import LoginForm from '@components/PopupPage/Form/LoginForm';
+import SignupForm from '@components/PopupPage/Form/SignupForm';
+import MainMenu from '@components/PopupPage/MainMenu/MainMenu';
+import MyPokemons from '@components/PopupPage/MyPokemons/MyPokemons';
+import ProtectedRoutes from '@components/PopupPage/Routes/ProtectedRoutes';
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
@@ -31,6 +32,14 @@ const Popup = () => {
                     element={
                         <ProtectedRoutes>
                             <MainMenu />
+                        </ProtectedRoutes>
+                    }
+                />
+                <Route
+                    path="/pokemons"
+                    element={
+                        <ProtectedRoutes>
+                            <MyPokemons />
                         </ProtectedRoutes>
                     }
                 />

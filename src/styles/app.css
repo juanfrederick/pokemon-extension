@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body::-webkit-scrollbar {
+/* body::-webkit-scrollbar {
     width: 6px;
     height: 6px;
 }
@@ -22,4 +22,215 @@ body::-webkit-scrollbar-thumb:hover {
 }
 body::-webkit-scrollbar-thumb:active {
     background: rgba(0, 0, 0, 0.9);
+} */
+
+/* Popup */
+.poke-pu-mypoke-container {
+    @apply p-6 flex flex-col gap-3;
+    width: 400px;
+}
+
+.poke-pu-mypoke_back-container {
+    @apply flex items-center cursor-pointer gap-1;
+}
+
+.poke-pu-mypoke_back-pg {
+    @apply font-semibold text-default-400 text-xl;
+}
+
+.poke-pu-mypoke_heading {
+    @apply text-3xl;
+}
+.poke-pu-mypoke_divider {
+    @apply w-full bg-plain-150;
+    height: 1px;
+}
+
+.poke-pu-mypoke_card-container {
+    @apply w-full flex flex-col gap-4;
+}
+
+.poke-pu-mypoke_card-image {
+    @apply w-full object-contain bg-plain-150;
+    border-radius: 20px;
+    height: 200px;
+}
+
+.poke-pu-mypoke_card-details {
+    @apply flex justify-between;
+}
+
+.poke-pu-mypoke_card-details-nickname {
+    @apply text-2xl font-semibold text-default-400;
+}
+
+.poke-pu-mypoke_card-details-name {
+    @apply font-semibold text-default-400;
+}
+
+.poke-pu-mypoke_card-release-btn {
+    @apply text-plain-200 bg-error px-5 py-3 font-bold rounded-xl;
+}
+
+.poke-pu-mypoke_card-details-date {
+    @apply text-default-100 font-semibold;
+}
+
+.poke-pu-mypoke_nopoke {
+    @apply flex flex-col items-center gap-4 px-6;
+}
+
+.poke-pu-form_container {
+    @apply p-10 bg-white flex flex-col gap-8 w-[400px] relative;
+}
+
+.poke-pu-form_heading {
+    @apply font-semibold text-5xl text-default-400;
+}
+
+.poke-pu-form_error {
+    @apply text-error font-semibold absolute top-56;
+}
+
+.poke-pu-form_form {
+    @apply flex flex-col mt-8 gap-3;
+}
+
+.poke-pu-form_label {
+    @apply text-default-500 font-semibold text-[15px];
+}
+
+.poke-pu-form_input {
+    @apply bg-plain-100 text-default-300 p-3 w-full font-semibold text-[15px] rounded-xl;
+}
+
+.poke-pu-form_button {
+    @apply w-full py-3 bg-info text-plain-200 font-bold rounded-xl;
+}
+
+.poke-pu-form_have-account {
+    @apply text-default-100 font-semibold text-sm;
+}
+
+.poke-pu-form_link {
+    @apply text-default-400;
+}
+
+.poke-pu-menu_container {
+    @apply p-10 bg-white flex flex-col gap-8 w-[400px] relative;
+}
+
+.poke-pu-menu_heading-container {
+    @apply flex items-center gap-4;
+}
+
+.poke-pu-menu_square {
+    @apply w-4 h-8 bg-[#CABDFF] rounded-[4px];
+}
+
+.poke-pu-menu_heading {
+    @apply font-semibold text-xl text-default-400;
+}
+
+.poke-pu-menu_catched-container {
+    @apply w-full h-[132px] gap-4 bg-[#B5E4CA]/[25%] flex items-center rounded-xl p-4;
+}
+
+.poke-pu-menu_catched {
+    @apply flex flex-col gap-1;
+}
+
+.poke-pu-menu_catched-text {
+    @apply text-sm text-default-300 font-semibold;
+}
+
+.poke-pu-menu_catched-value {
+    @apply text-5xl text-default-400 font-semibold;
+}
+
+.poke-pu-menu_button-container {
+    @apply px-12 flex flex-col gap-4;
+}
+
+.poke-pu-menu_button-primary {
+    @apply py-3 w-full bg-info text-plain-200 font-bold rounded-xl;
+}
+
+.poke-pu-menu_button-error {
+    @apply py-3 w-full bg-error text-plain-200 font-bold rounded-xl;
+}
+
+/* Content Script */
+.poke-cs-modal_container {
+    @apply bg-plain-200 w-[1033px] h-[653px] p-8 absolute left-0 right-0 bottom-0 top-0 m-auto rounded-3xl pointer-events-auto;
+}
+
+.poke-cs-modal_heading {
+    @apply font-semibold text-4xl text-default-400;
+}
+
+.poke-cs-modal_pg {
+    @apply font-semibold text-xl text-default-100;
+}
+
+.poke-cs-loading_container {
+    @apply flex items-center justify-center flex-col gap-2 absolute left-0 right-0 top-0 bottom-0 m-auto;
+}
+
+.poke-cs-loading_ani {
+    @apply w-[70%] md:w-[35%];
+}
+
+.poke-cs-loading_heading {
+    @apply font-bold text-2xl text-default-500;
+}
+
+.poke-cs-catch-success_container {
+    @apply flex flex-col items-center justify-center py-5 absolute top-0 bottom-0 left-0 right-0 m-auto;
+}
+
+.poke-cs-catch-success_image {
+    @apply w-40;
+}
+
+.poke-cs-catch-success_form-container {
+    @apply flex flex-col items-center;
+}
+
+.poke-cs-catch-success_heading {
+    @apply font-bold text-2xl text-center my-2 text-default-500;
+}
+
+.poke-cs-catch-success_pg {
+    @apply w-40 text-center my-2 text-default-500;
+}
+
+.poke-cs-catch-success_bold {
+    @apply font-bold;
+}
+
+.poke-cs-catch-success_form {
+    @apply flex flex-col gap-4;
+}
+
+.poke-cs-catch-success_label {
+    @apply font-semibold text-default-500 text-sm;
+}
+
+.poke-cs-catch-success_input {
+    @apply p-3 bg-plain-100 text-default-400 font-semibold rounded-xl;
+    width: 360px;
+}
+
+.poke-cs-catch-success_button {
+    @apply bg-info text-plain-200 py-3 rounded-xl;
+    width: 360px;
+}
+
+.poke-cs-third-party-page {
+    @apply absolute left-4 bottom-4 cursor-pointer pointer-events-auto;
+}
+
+.poke-cs {
+    @apply w-full h-full relative;
 }

@@ -1,26 +1,26 @@
 {
-    "manifest_version": 2,
-    "name": "Web Extension Starter",
-    "description": "A Web Extension starter kit",
+    "manifest_version": 3,
+    "name": "Pokemon Game",
+    "description": "Script Based Pokemon Game",
     "version": "1.0.0",
-    "browser_action": {
+    "action": {
         "default_icon": "icon-16.png",
         "default_popup": "popup.html"
     },
     "background": {
-        "scripts": ["js/background.bundle.js"],
-        "persistent": false
+        "service_worker": "js/background.bundle.js"
     },
-    "content_scripts": [{
-      "matches": ["http://*/", "https://*/"],
-        "js": [
-          "js/content-script.bundle.js"
-        ]
-    }],
+    "content_scripts": [
+        {
+            "matches": ["http://*/", "https://*/", "<all_urls>"],
+            "js": ["js/content-script.bundle.js"]
+        }
+    ],
     "icons": {
         "16": "icon-16.png",
         "48": "icon-48.png",
         "128": "icon-128.png"
     },
-    "permissions": ["tabs", "activeTab", "notifications", "http://*/", "https://*/"]
+    "permissions": ["tabs", "activeTab", "notifications", "storage"],
+    "host_permissions": ["http://*/", "https://*/"]
 }

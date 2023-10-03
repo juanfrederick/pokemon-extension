@@ -1,28 +1,6 @@
-<div id="top"></div>
+## Pokemon Extension
 
-<!-- PROJECT LOGO -->
-<br />
-
-  <a align="left" href="https://github.com/BCIT-DDC">
-    <img src="./assets/images/DDC-rounded.png" alt="Logo" width="40" height="40">
-  </a>
-
-<!-- ABOUT THE PROJECT -->
-
-## Web Extension Starter
-
-<!-- <p align="center">
-    <img alt="Search" src="./assets/images/SearchBarScreenshot.JPG" src="./assets/video/SearchBarDemo.gif" width="100%"/>
-</p> -->
-
-A web extension starter, built with React, Typescript, and Tailwind CSS. Build once, and run on multiple browsers: Google Chrome, Mozilla Firefox, Microsoft Edge, and Brave.
-
-### Built With
-
--   ![React](https://img.shields.io/badge/-React-050B1E?&logo=React)
--   ![TypeScript](https://img.shields.io/badge/-TypeScript-050B1E?&logo=TypeScript)
--   ![Webpack](https://img.shields.io/badge/-Webpack.js-050B1E?&logo=webpack)
--   ![TailwindCSS](https://img.shields.io/badge/-Tailwind_CSS-050B1E?&logo=tailwind-css)
+This is text based pokemon game for learn to build a extension
 
 <!-- GETTING STARTED -->
 
@@ -33,17 +11,23 @@ A web extension starter, built with React, Typescript, and Tailwind CSS. Build o
 Clone this repository:
 
 ```
-git clone git@github.com:BCIT-DDC/web-extension-ts-starter.git
+git clone https://github.com/juanfrederick/pokemon-extension.git
 ```
 
 Install npm dependencies:
 
 ```
-cd web-extension-ts-starter
+cd pokemon-extension
 npm install
 ```
 
 ### 2. Build the Extension
+
+#### Start the dbjson server
+
+```
+npm run server
+```
 
 #### Start the Webpack Development Server
 
@@ -59,60 +43,67 @@ npm run build
 
 The relevant web extension files will be present in the output `.dist/` folder.
 
-<!-- USAGE EXAMPLES -->
+## What did i learn from building this extension
 
-## Usage
+#### 25 September 2023
 
---
+```
+Creating popup design (sign in and signup). I try to use redux to popup, and i think redux can't be applied because on redux dev tools not showing any state that i made. But redux still work on popup extention even not showing on redux dev tools.
+```
 
-<!-- ROADMAP -->
+#### 26 September 2023
 
-## Roadmap
+```
+Finding out to use content script for show the pokeballs to the web, trying to render the pokeballs using DOM but i cannot do that, because there's error. So i changed the file to tsx and try to make it like react root structure. at first i just copy the react root structure to the index, but it changed all the web content not add new content. So i make a new div and append to the body and it works. For the style, i see the usertip builder extention (make the width and height 100%, position fixed, and set the pointer event to none) i try this before, but i can't click anything in the web because the pointer event still auto.
 
-<!-- -   [x] Add Changelog -->
+Problem:
+Default contentScript files type is .ts, and it's hard to implementing the ReactDOM to .ts files
 
--   [ ] Add support for Opera
+Solution:
+Change the ts to tsx files and change webpack contentScript bundle files to tsx too. For rendering, create div element and appendChild to body, and make that div as a root of ContentScript.
 
-See the [open issues](https://github.com/BCIT-DDC/web-extension-ts-starter/issues) for a full list of proposed features (and known issues).
+---
 
-<!-- CONTRIBUTING -->
+Problem:
+Can't use chrome. library in content script and popup files
 
-## Contributing
+Solution:
+Install @types/chrome using npm and add compilerOptions.types "chrome" in tsconfig.json
+```
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+#### 27 September 2023
 
-If you would like to contribute, please have a look at our [contributing guidelines](https://github.com/BCIT-DDC/docs/blob/main/contributing.md).
+```
+I try to following the documentation, using async await for passing the message. But it cannot working, so i try to use the callback one, finding out that (lastFocusedWindow: true) does'nt returning any object, so i change it to (currentWindow: true). Still curious about the async await one, so i try to search the solution and finding out that async await is for manifest version 3 only. so i update my manifest.json version to 3. I try to send the message to the content script but it's error, it because i haven't add the chrome.runtime.onMessage.addListener in content script. when i add that, the message can be passed to content script.
 
-### Contributors
 
-This project exists thanks to all the people who contribute.
-<br/>
-<a href="https://github.com/BCIT-DDC/web-extension-ts-starter/graphs/contributors">
-<img src="https://contrib.rocks/image?repo=bcit-ddc/web-extension-ts-starter" width="40" height="40"/>
-</a>
+Problem:
+Cannot using await for passing message from popup to content script
 
-<!-- TESTING -->
+Solution:
+Using callback or changing to manifest 3
+```
 
-<!-- ## TESTING -->
+#### 29 September 2023
 
-<!-- LINTING -->
+```
+I using redux in content-script for manage the state, and it's working even the redux dev tools not showing the state. The content-script and popup state will different even have the same store. I think it's because the provider is warping different child.
+```
 
-<!-- ## Linting -->
+#### 2 October 2023
 
-<!-- LICENSE -->
+```
+I'm using localstorage for saving user data, but every website have different storage, so the data will always different on every website. So i'm using chrome.storage.local for saving user data, i change all localstorage to chrome.storage.local on the code.
 
-## License
+Problem:
+data value will changed when website is change
 
-[MIT](LICENSE.md) © BCIT-DDC
+Solution:
+use chrome.storage.local to save the data to the chrome, not the website only
+```
 
-<!-- ACKNOWLEDGMENTS -->
+## The Extension flow/architecture that i understand
 
-## Acknowledgments
+![Extension Jpeg](assets/images/Extension.jpg)
 
-- [Heroicons](https://heroicons.com/)
-- [Headless UI](https://headlessui.dev/)
-
-## Status
-<p align="center">
-    <img alt="Search" src="https://repobeats.axiom.co/api/embed/67a1ec304f49e3cc25a9b5e5ba7a8e1e04d27e20.svg" width="100%"/>
-</p>
+Extension that i made is just connecting content script to popup script, for the data fetching i do directly in the content script or popup script and save it to each redux state
