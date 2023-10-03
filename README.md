@@ -1,4 +1,4 @@
-## Pokemon Extension
+# Pokemon Extension
 
 This is text based pokemon game for learn to build a extension
 
