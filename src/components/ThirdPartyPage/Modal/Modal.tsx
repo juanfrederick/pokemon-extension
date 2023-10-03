@@ -4,14 +4,29 @@ import { useSelector } from 'react-redux';
 import { RootState } from 'src/store';
 import CatchSuccess from '../CatchSuccess/CatchSuccess';
 
+interface AppearType {
+    id: number;
+    sprites: string;
+    name: string;
+}
+
 const Modal = () => {
     const [fetchData, setFetchData] = useState<boolean>(true);
-    const { pokemonAppear } = useSelector((state: RootState) => {
-        return state.pokemon;
-    });
+
+    const [pokemonAppear, setPokemonAppear] = useState<AppearType | null>(null);
 
     const { username } = useSelector((state: RootState) => {
         return state.user;
+    });
+
+    chrome.storage.local.get().then(result => {
+        const pokemon = result.pokemonAppear;
+        const data = {
+            id: pokemon.id,
+            sprites: pokemon.sprites.front_default,
+            name: pokemon.name,
+        };
+        setPokemonAppear(data);
     });
 
     return (
@@ -26,9 +41,9 @@ const Modal = () => {
                 {fetchData && <LoadingScreen setFechData={setFetchData} />}
                 {!fetchData && (
                     <CatchSuccess
-                        id={pokemonAppear.id}
-                        image={pokemonAppear.sprites}
-                        name={pokemonAppear.name}
+                        id={pokemonAppear!.id}
+                        image={pokemonAppear!.sprites}
+                        name={pokemonAppear!.name}
                     />
                 )}
             </div>

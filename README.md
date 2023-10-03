@@ -105,8 +105,12 @@ Solution:
 use chrome.storage.local to save the data to the chrome, not the website only
 ```
 
+---
+
+#### 3 October 2023
+
+Try to understand the point of background script, fetching pokemon and saving pokemon i made it to the background script. So when the pokeball is clicked, send message to background script using "chrome.runtime.sendMessage()". In the bg script get and check the message. so every message have their own fetching code and it different. For the fetch pokemon i used "FETCH_POKEMON", and when the message sended is "FETCH_POKEMON" pokemon will fetched and saved to the "browser.storage.local". For showing the pokemon data in content script just get the data from "browser.storage.local".
+
 ## The Extension flow/architecture that i understand
 
-![Extension Jpeg](assets/images/Extension.jpg)
-
-Extension that i made is just connecting content script to popup script, for the data fetching i do directly in the content script or popup script and save it to each redux state
+![Extension Jpeg](assets/images/ExtensionArchitecture.jpg)

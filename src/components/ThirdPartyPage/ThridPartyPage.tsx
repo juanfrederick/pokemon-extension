@@ -11,7 +11,7 @@ const ThridPartyPage = () => {
     const { ballIsClicked } = useSelector((state: RootState) => {
         return state.pokemon;
     });
-    const { fetchPokemon } = useCatchPokemon();
+
     const dispatch = useDispatch<AppDispatch>();
 
     /** this is for getting the username and pass to the redux */
@@ -28,14 +28,10 @@ const ThridPartyPage = () => {
         e.stopPropagation();
         if (!ballIsClicked) {
             dispatch(setBallIsClicked(true));
-            /** this is for get the pokemon that appear and set it to redux */
-            const appear = await fetchPokemon();
-            const data = {
-                name: appear.name,
-                id: appear.id,
-                sprites: appear.sprites.front_default,
-            };
-            dispatch(setPokemonAppear(data));
+
+            chrome.runtime.sendMessage({
+                message: 'FETCH_POKEMON',
+            });
         }
     };
 

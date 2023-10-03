@@ -36,7 +36,8 @@ const CatchSuccess = ({ id, name, image }: Props) => {
             nickname: nicknameVal,
             user: username!,
         };
-        await savePokemon(data);
+        // await savePokemon(data);
+        chrome.runtime.sendMessage({ message: 'SAVE_POKEMON', data });
         setIsSaved(true);
     };
 

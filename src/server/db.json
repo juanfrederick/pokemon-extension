@@ -37,7 +37,7 @@
       "username": "2020131030",
       "email": "juan.frederick58@uvers.ac.id",
       "password": "asd",
-      "pokemonCatched": 3,
+      "pokemonCatched": 8,
       "id": 6
     }
   ],
@@ -311,6 +311,56 @@
       "time": "9.6AM",
       "user": "2020131030",
       "id": 28
+    },
+    {
+      "pokemonId": 679,
+      "name": "honedge",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/679.png",
+      "nickname": "honedge",
+      "date": "3 October 2023",
+      "time": "12.32AM",
+      "user": "2020131030",
+      "id": 29
+    },
+    {
+      "pokemonId": 363,
+      "name": "spheal",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/363.png",
+      "nickname": "spheal",
+      "date": "3 October 2023",
+      "time": "2.6PM",
+      "user": "2020131030",
+      "id": 30
+    },
+    {
+      "pokemonId": 107,
+      "name": "hitmonchan",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/107.png",
+      "nickname": "hitmonchan",
+      "date": "3 October 2023",
+      "time": "2.7PM",
+      "user": "2020131030",
+      "id": 31
+    },
+    {
+      "pokemonId": 91,
+      "name": "cloyster",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/91.png",
+      "nickname": "cloyster",
+      "date": "3 October 2023",
+      "time": "2.10PM",
+      "user": "2020131030",
+      "id": 32
+    },
+    {
+      "pokemonId": 623,
+      "name": "golurk",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/623.png",
+      "nickname": "golurk",
+      "date": "3 October 2023",
+      "time": "2.12PM",
+      "user": "2020131030",
+      "id": 33
     }
   ]
 }
