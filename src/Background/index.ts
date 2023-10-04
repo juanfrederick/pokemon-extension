@@ -111,11 +111,21 @@ const getRandomPokemon = async () => {
 
 chrome.runtime.onMessage.addListener(async (res, req, sendResponse) => {
     if(res.message === "FETCH_POKEMON"){
-        const pokeId = await getRandomPokemon()
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
-        const data = await response.json();
-            
-        chrome.storage.local.set({pokemonAppear: data})
+      const pokeId = await getRandomPokemon()
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`);
+      const data = await response.json();
+      
+      chrome.storage.local.set({pokemonAppear: data}, async ()=>{
+        const [tab] = await chrome.tabs.query({
+          active: true,
+          currentWindow: true,
+        });
+
+        if(typeof tab.id === "number"){
+          chrome.tabs.sendMessage(tab.id, ({message:"POKEMON_SAVED"}))
+        }
+        
+      })
     }
 
     if(res.message === "SAVE_POKEMON"){
@@ -143,10 +153,5 @@ chrome.runtime.onMessage.addListener(async (res, req, sendResponse) => {
 
         await patchCatchedPokemon();
     }
-
-    console.log(res);
     
-    // if(res.aselole){
-    //     console.log("ASELOLEEE");
-    // }
 })

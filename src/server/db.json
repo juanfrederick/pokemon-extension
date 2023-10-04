@@ -30,7 +30,7 @@
       "username": "asd",
       "email": "asd@asd.cp",
       "password": "asd",
-      "pokemonCatched": 9,
+      "pokemonCatched": 13,
       "id": 5
     },
     {
@@ -361,6 +361,36 @@
       "time": "2.12PM",
       "user": "2020131030",
       "id": 33
+    },
+    {
+      "pokemonId": 794,
+      "name": "buzzwole",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/794.png",
+      "nickname": "asep",
+      "date": "3 October 2023",
+      "time": "3.30PM",
+      "user": "asd",
+      "id": 34
+    },
+    {
+      "pokemonId": 328,
+      "name": "trapinch",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/328.png",
+      "nickname": "trapinch",
+      "date": "3 October 2023",
+      "time": "3.31PM",
+      "user": "asd",
+      "id": 35
+    },
+    {
+      "pokemonId": 434,
+      "name": "stunky",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/434.png",
+      "nickname": "stunky",
+      "date": "4 October 2023",
+      "time": "2.59PM",
+      "user": "asd",
+      "id": 36
     }
   ]
 }

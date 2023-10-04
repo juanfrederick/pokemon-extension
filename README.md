@@ -111,6 +111,12 @@ use chrome.storage.local to save the data to the chrome, not the website only
 
 Try to understand the point of background script, fetching pokemon and saving pokemon i made it to the background script. So when the pokeball is clicked, send message to background script using "chrome.runtime.sendMessage()". In the bg script get and check the message. so every message have their own fetching code and it different. For the fetch pokemon i used "FETCH_POKEMON", and when the message sended is "FETCH_POKEMON" pokemon will fetched and saved to the "browser.storage.local". For showing the pokemon data in content script just get the data from "browser.storage.local".
 
+---
+
+#### 4 October 2023
+
+Try to understand the point of background script, i want to send response to content script after pokemon data saved, but the response is always undefined if there's await executed before sending response. So i'm not send a response but send a message back to content script, at first i used chrome.runtime.sendMessage for sending a message. But i got Promise error even i already have chrome.runtime.onMessage.addListener on my content script. So i try using chrome.tabs.sendMessage the way is same as the way popup send message to content script, and it's work. After content script got the message, i get the data from chrome.storage.local and save it to redux state.
+
 ## The Extension flow/architecture that i understand
 
-![Extension Jpeg](assets/images/ExtensionArchitecture.jpg)
+![Extension Jpeg](assets/images/pokemon_ext.jpg)
