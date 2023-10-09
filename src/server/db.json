@@ -11,7 +11,7 @@
       "username": "asd",
       "email": "asd@asd.cp",
       "password": "asd",
-      "pokemonCatched": 19,
+      "pokemonCatched": 20,
       "id": 5
     },
     {
@@ -37,16 +37,6 @@
     }
   ],
   "pokemonSaved": [
-    {
-      "pokemonId": 250,
-      "name": "ho-oh",
-      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/250.png",
-      "nickname": "ho-oh",
-      "date": "2 October 2023",
-      "time": "11.11AM",
-      "user": "asd",
-      "id": 7
-    },
     {
       "pokemonId": 608,
       "name": "lampent",
@@ -296,6 +286,16 @@
       "time": "3.2PM",
       "user": "asd",
       "id": 39
+    },
+    {
+      "pokemonId": 400,
+      "name": "bibarel",
+      "front_default": "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/400.png",
+      "nickname": "bibarel",
+      "date": "9 October 2023",
+      "time": "9.11AM",
+      "user": "asd",
+      "id": 40
     }
   ]
 }

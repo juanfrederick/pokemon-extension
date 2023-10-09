@@ -20,16 +20,20 @@ const MainMenu = () => {
         chrome.storage.local.get().then(res => {
             setIsCatching(res.isCatching);
 
-            chrome.runtime.sendMessage(
-                {
-                    message: 'FETCH_USER',
-                    username: res.username,
-                },
-                res => {
-                    const { user } = res;
-                    dispatch(setPokeCatched(user.pokemonCatched));
-                },
-            );
+            if (res.username) {
+                chrome.runtime.sendMessage(
+                    {
+                        message: 'FETCH_USER',
+                        username: res.username,
+                    },
+                    res => {
+                        const { user } = res;
+                        if (user) {
+                            dispatch(setPokeCatched(user.pokemonCatched));
+                        }
+                    },
+                );
+            }
         });
     }, []);
 
