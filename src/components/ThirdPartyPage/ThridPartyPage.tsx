@@ -1,10 +1,9 @@
 import Pokeball from '@components/Logo/Pokeball';
 import React, { useEffect, useState } from 'react';
 import Modal from './Modal/Modal';
-import useCatchPokemon from '../../hooks/useCatchPokemon';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from 'src/store';
-import { setPokemonAppear, setBallIsClicked } from '../../reducer/pokemonSlice';
+import { setBallIsClicked } from '../../reducer/pokemonSlice';
 import { setUsername } from '../../reducer/userSlice';
 
 const ThridPartyPage = () => {

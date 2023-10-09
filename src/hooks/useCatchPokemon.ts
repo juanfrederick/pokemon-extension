@@ -58,7 +58,7 @@ const useCatchPokemon = () => {
         );
 
         const data = await response.json();
-        console.log(data);
+        
         const pokemonCatched = data[0].pokemonCatched;
         const id = data[0].id;
 

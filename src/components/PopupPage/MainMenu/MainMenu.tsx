@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import CatchedLogo from '../../Logo/CatchedLogo';
 import React, { useEffect, useState } from 'react';
 import { AppDispatch, RootState } from 'src/store';
-import { fetchUser, resetUser } from '../../../reducer/userSlice';
+import { resetUser, setPokeCatched } from '../../../reducer/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const MainMenu = () => {
@@ -20,9 +20,16 @@ const MainMenu = () => {
         chrome.storage.local.get().then(res => {
             setIsCatching(res.isCatching);
 
-            if (res.username) {
-                dispatch(fetchUser(res.username));
-            }
+            chrome.runtime.sendMessage(
+                {
+                    message: 'FETCH_USER',
+                    username: res.username,
+                },
+                res => {
+                    const { user } = res;
+                    dispatch(setPokeCatched(user.pokemonCatched));
+                },
+            );
         });
     }, []);
 

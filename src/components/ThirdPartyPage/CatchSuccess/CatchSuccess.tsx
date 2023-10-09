@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import useCatchPokemon from '../../../hooks/useCatchPokemon';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from '../../../store';
 import { setBallIsClicked } from '../../../reducer/pokemonSlice';
@@ -12,7 +11,6 @@ interface Props {
 
 const CatchSuccess = ({ id, name, image }: Props) => {
     const [nicknameVal, setNicknameVal] = useState<string>('');
-    const { savePokemon } = useCatchPokemon();
     const [isSaved, setIsSaved] = useState<boolean>(false);
 
     const { username } = useSelector((state: RootState) => {

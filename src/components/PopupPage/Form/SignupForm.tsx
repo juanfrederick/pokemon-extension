@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import PokemonLogo from '@components/Logo/PokemonLogo';
-
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from 'src/store';
-import { setEmail, setUsername, userSignup } from '../../../reducer/userSlice';
+import {
+    setEmail,
+    setError,
+    setIsLoading,
+    setUsername,
+} from '../../../reducer/userSlice';
 
 const SignupForm = () => {
     const [userValue, setUserValue] = useState<string>('');
@@ -23,6 +27,8 @@ const SignupForm = () => {
         if (email) {
             navigate('/');
         }
+
+        dispatch(setError(null));
 
         chrome.storage.local.get().then(result => {
             if (result.email) {
@@ -64,7 +70,25 @@ const SignupForm = () => {
             password: passwordValue,
             repeatPassword: confirmValue,
         };
-        dispatch(userSignup(data));
+
+        dispatch(setError(null));
+        dispatch(setIsLoading(true));
+
+        chrome.runtime.sendMessage({ message: 'USER_SIGNUP', data }, res => {
+            if (res.isLoading !== undefined) {
+                dispatch(setIsLoading(res.isLoading));
+            }
+
+            if (res.data) {
+                dispatch(setError(null));
+                dispatch(setUsername(res.data.username));
+                dispatch(setEmail(res.data.email));
+            }
+
+            if (res.error) {
+                dispatch(setError(res.error));
+            }
+        });
     };
 
     return (

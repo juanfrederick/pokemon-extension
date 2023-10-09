@@ -117,6 +117,26 @@ Try to understand the point of background script, fetching pokemon and saving po
 
 Try to understand the point of background script, i want to send response to content script after pokemon data saved, but the response is always undefined if there's await executed before sending response. So i'm not send a response but send a message back to content script, at first i used chrome.runtime.sendMessage for sending a message. But i got Promise error even i already have chrome.runtime.onMessage.addListener on my content script. So i try using chrome.tabs.sendMessage the way is same as the way popup send message to content script, and it's work. After content script got the message, i get the data from chrome.storage.local and save it to redux state.
 
+---
+
+#### 5 October 2023
+
+Change signin and signup fetch to background script, i still curious why i can't sending back response if there's await executed before sending response. So i try to figure it out and implement it to signin and signup fetch. At first i try to change the way of fetching data without using await, just "fetch.then", but the error still same. And how to send response if there's any asynchronous code is return true in the end of the code. The response, just can sent once but the code will still running after the response sent. For the signup one, i use fetch chaining to stop the code after throwing the error.
+
+```
+Problem:
+Unchecked runtime.lastError: The message port closed before a response was received
+
+Solution:
+Don't use async function and return true in the end of addListener callback function
+```
+
+---
+
+#### 6 October 2023
+
+Move all fetching API to background script and remove unused fetching api code in popup and content script.
+
 ## The Extension flow/architecture that i understand
 
 ![Extension Jpeg](assets/images/pokemon_ext.jpg)

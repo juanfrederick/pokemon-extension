@@ -3,7 +3,12 @@ import PokemonLogo from '@components/Logo/PokemonLogo';
 
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { setEmail, setUsername, userLogin } from '../../../reducer/userSlice';
+import {
+    setEmail,
+    setError,
+    setIsLoading,
+    setUsername,
+} from '../../../reducer/userSlice';
 
 import { AppDispatch, RootState } from 'src/store';
 
@@ -24,6 +29,8 @@ const LoginForm = () => {
             navigate('/');
         }
 
+        dispatch(setError(null));
+
         chrome.storage.local.get().then(result => {
             if (result.email) {
                 dispatch(setEmail(result.email));
@@ -38,7 +45,26 @@ const LoginForm = () => {
     /** this is for onsubmit handler */
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        dispatch(userLogin({ username: userValue, password: passwordValue }));
+        const data = { username: userValue, password: passwordValue };
+
+        dispatch(setError(null));
+        dispatch(setIsLoading(true));
+
+        chrome.runtime.sendMessage({ message: 'USER_LOGIN', data }, res => {
+            if (res.isLoading !== undefined) {
+                dispatch(setIsLoading(res.isLoading));
+            }
+
+            if (res.data) {
+                dispatch(setError(null));
+                dispatch(setUsername(res.data.username));
+                dispatch(setEmail(res.data.email));
+            }
+
+            if (res.error) {
+                dispatch(setError(res.error));
+            }
+        });
     };
 
     /** this is for username input handler */

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { ArrowBack } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
 import { AppDispatch, RootState } from 'src/store';
-import { fetchPokemon, deletePokemon } from '../../../reducer/userSlice';
+import { setPokemon, updatePokemon } from '../../../reducer/userSlice';
 import { useNavigate } from 'react-router-dom';
 
 const MyPokemons = () => {
@@ -16,13 +16,28 @@ const MyPokemons = () => {
     /** This is for getting user pokemon data */
     useEffect(() => {
         if (username) {
-            dispatch(fetchPokemon(username));
+            chrome.runtime.sendMessage(
+                {
+                    message: 'FETCH_CATCHED_POKEMON',
+                    username,
+                },
+                res => {
+                    dispatch(setPokemon(res.pokemon));
+                },
+            );
         }
     }, []);
 
     /** This is for release the pokemon */
     const releaseHandler = (id: number) => {
-        dispatch(deletePokemon(id));
+        chrome.runtime.sendMessage(
+            { message: 'USER_RELEASE_POKEMON', id },
+            res => {
+                if (res.deleted) {
+                    dispatch(updatePokemon(id));
+                }
+            },
+        );
     };
 
     return (
@@ -38,8 +53,6 @@ const MyPokemons = () => {
             <div className="poke-pu-mypoke_divider"></div>
             {pokemon.length > 0 ? (
                 pokemon.map((val: any) => {
-                    console.log(val);
-
                     return (
                         <div
                             className="poke-pu-mypoke_card-container"

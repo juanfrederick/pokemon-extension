@@ -4,26 +4,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* body::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
-}
-
-body::-webkit-scrollbar-track {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.1);
-}
-body::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: rgba(0, 0, 0, 0.2);
-}
-body::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.4);
-}
-body::-webkit-scrollbar-thumb:active {
-    background: rgba(0, 0, 0, 0.9);
-} */
-
 /* Popup */
 .poke-pu-mypoke-container {
     @apply p-6 flex flex-col gap-3;
@@ -41,6 +21,7 @@ body::-webkit-scrollbar-thumb:active {
 .poke-pu-mypoke_heading {
     @apply text-3xl;
 }
+
 .poke-pu-mypoke_divider {
     @apply w-full bg-plain-150;
     height: 1px;
@@ -89,7 +70,7 @@ body::-webkit-scrollbar-thumb:active {
 }
 
 .poke-pu-form_error {
-    @apply text-error font-semibold absolute top-56;
+    @apply text-error font-semibold absolute top-52;
 }
 
 .poke-pu-form_form {

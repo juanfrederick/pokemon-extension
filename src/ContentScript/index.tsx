@@ -16,7 +16,7 @@ rootElement.style.pointerEvents = 'none';
 
 document.body.appendChild(rootElement);
 
-console.log(rootElement);
+// console.log(rootElement);
 
 ReactDOM.createRoot(rootElement).render(
     <Provider store={store}>

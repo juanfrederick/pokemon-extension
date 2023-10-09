@@ -16,12 +16,6 @@ import browser, { Tabs } from 'webextension-polyfill';
  */
 
 const Popup = () => {
-    // Sends the `popupMounted` event
-    React.useEffect(() => {
-        browser.runtime.sendMessage({ popupMounted: true });
-    }, []);
-
-    // Renders the component tree
     return (
         <div className="font-inter">
             <Routes>
